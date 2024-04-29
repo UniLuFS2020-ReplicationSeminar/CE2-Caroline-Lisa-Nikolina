@@ -1,40 +1,51 @@
 library(tidyverse)
 library(httr)
 library(rvest)
+library(jsonlite)
+library(here)  # For file path management
 
-# Set up credentials
+# Load credentials
 theguardian_cred <- readr::read_csv(file = here::here("credentials.csv"))
 
 # Base URL for The Guardian API
-base_url <- "https://content.guardianapis.com/search?q=open%20AI&api-key=c30f9048-1c79-4e1e-800a-93693df18f9c"
+base_url <- "https://content.guardianapis.com/search"
 
-# API key (replace 'your_api_key' with your actual API key)
+# API key
 api_key <- theguardian_cred$api_key
 
-# Make the GET request
-response <- GET(url = base_url, query = list('api-key' = api_key))
+# Set up storage for all articles
+all_articles <- tibble()
 
-# Check the status of the response
-if (status_code(response) == 200) {
-  # If request is successful, parse the response
-  content_data <- content(response, "parsed")
+# Set the total number of pages
+total_pages <- 5057  # Adjust based on the total results divided by results per page
+
+# Loop through all pages
+for (page in 1:total_pages) {
+  # Construct the query for each page
+  query_list <- list('q' = 'open AI', 'api-key' = api_key, 'page' = as.character(page), 'page-size' = '10')
   
-  #Print content data
-  print(content_data)
- 
-} else {
-  # If the request failed, print the status code
-  print(paste("Failed to retrieve data:", status_code(response)))
+  # Make the GET request
+  response <- GET(url = base_url, query = query_list)
+  
+  # Check if the request was successful
+  if (status_code(response) == 200) {
+    # Parse the response
+    article_data <- content(response, as = "text") %>%
+      fromJSON()
+    
+    # Extract the articles
+    articles <- article_data$response$results %>% 
+      select(title = webTitle, url = webUrl, date = webPublicationDate, section = sectionName)
+    
+    # Append the articles to the all_articles tibble
+    all_articles <- bind_rows(all_articles, articles)
+  } else {
+    print(paste("Failed to fetch data for page", page))
+  }
+  
+  # Optional: a polite delay to avoid hitting the server too hard
+  Sys.sleep(2)
 }
 
-# Get the list of section names
-section_names <- unique(sapply(content_data$response$results, function(article) article$sectionName))
-
-# Loop through each section
-for (section_name in section_names) {
-  # Count the number of articles in the current section
-  num_articles <- sum(sapply(content_data$response$results, function(article) article$sectionName == section_name))
-  
-  # Print the section name and the number of articles
-  cat("Section:", section_name, "- Number of articles:", num_articles, "\n")
-}
+# View the structure of the collected articles
+print(all_articles)
