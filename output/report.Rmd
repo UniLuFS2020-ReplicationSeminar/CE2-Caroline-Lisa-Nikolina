@@ -14,3 +14,6 @@ We created a developer account to be able to access the data from the API. Then
 we retrieved the data with a GET request and parsed it to extract the relevant 
 information. We ended up with a tibble of 2390 articles, because it failed to 
 fetch data for page 240 and onward. These were sorted by relevancy.
+## Analysis
+We then created a plot to show the distribution of articles across the sections. 
+```{r}
