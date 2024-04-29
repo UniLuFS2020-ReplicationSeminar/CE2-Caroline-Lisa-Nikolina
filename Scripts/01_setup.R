@@ -53,4 +53,3 @@ print(all_articles)
 
 # Save the data to a CSV file
 write_csv(all_articles, "all_articles.csv") 
-
