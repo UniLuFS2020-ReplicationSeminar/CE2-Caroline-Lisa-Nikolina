@@ -14,6 +14,7 @@ api_key <- theguardian_cred$api_key
 # Make the GET request
 response <- GET(url = base_url, query = list('api-key' = api_key))
 
+
 # Check the status of the response
 if (status_code(response) == 200) {
   # If request is successful, parse the response
@@ -38,3 +39,11 @@ for (section_name in section_names) {
   # Print the section name and the number of articles
   cat("Section:", section_name, "- Number of articles:", num_articles, "\n")
 }
+
+# Parse the response
+library(jsonlite)
+
+article_data <- content(response, as = "text") %>%
+  fromJSON()
+
+articles <- article_data$response$results
