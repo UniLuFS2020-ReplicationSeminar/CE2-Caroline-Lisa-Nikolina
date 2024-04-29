@@ -1,23 +1,55 @@
 library(tidyverse)
 library(httr)
 library(rvest)
+library(jsonlite)
+library(readr)
+library(here)  # For file path management
 
-# Set up credentials
+# Load credentials
 theguardian_cred <- readr::read_csv(file = here::here("credentials.csv"))
 
 # Base URL for The Guardian API
-base_url <- "https://content.guardianapis.com/search?q=open%20AI&api-key=c30f9048-1c79-4e1e-800a-93693df18f9c"
+base_url <- "https://content.guardianapis.com/search"
 
 # API key
 api_key <- theguardian_cred$api_key
 
-# Make the GET request
-response <- GET(url = base_url, query = list('api-key' = api_key))
+# Set up storage for all articles
+all_articles <- tibble()
 
-# Parse the response
-library(jsonlite)
+# Set the total number of pages
+total_pages <- 5057  # Adjust based on the total results divided by results per page
 
-article_data <- content(response, as = "text") %>%
-  fromJSON()
+# Loop through all pages
+for (page in 1:total_pages) {
+  # Construct the query for each page
+  query_list <- list('q' = 'open AI', 'api-key' = api_key, 'page' = as.character(page), 'page-size' = '10')
+  
+  # Make the GET request
+  response <- GET(url = base_url, query = query_list)
+  
+  # Check if the request was successful
+  if (status_code(response) == 200) {
+    # Parse the response
+    article_data <- content(response, as = "text") %>%
+      fromJSON()
+    
+    # Extract the articles
+    articles <- article_data$response$results %>% 
+      select(title = webTitle, url = webUrl, date = webPublicationDate, section = sectionName)
+    
+    # Append the articles to the all_articles tibble
+    all_articles <- bind_rows(all_articles, articles)
+  } else {
+    print(paste("Failed to fetch data for page", page))
+  }
+  
+  # Optional: a polite delay to avoid hitting the server too hard
+  Sys.sleep(2)
+}
 
-articles <- article_data$response$results
+# View the structure of the collected articles
+print(all_articles)
+
+# Save the data to a CSV file
+write_csv(all_articles, "all_articles.csv") 
