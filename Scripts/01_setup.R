@@ -53,3 +53,14 @@ print(all_articles)
 
 # Save the data to a CSV file
 write_csv(all_articles, "all_articles.csv") 
+
+# Create a bar plot comparing the articles by section
+all_articles %>%
+  count(section) %>%
+  ggplot(aes(x = fct_reorder(section, n), y = n)) +
+  geom_col(fill = "skyblue") +
+  coord_flip() +
+  labs(title = "Number of Articles by Section",
+       x = "Sections",
+       y = "Number of Articles") +
+  theme_minimal() 
