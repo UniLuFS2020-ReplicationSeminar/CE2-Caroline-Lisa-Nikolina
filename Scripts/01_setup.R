@@ -2,6 +2,7 @@ library(tidyverse)
 library(httr)
 library(rvest)
 library(jsonlite)
+library(readr)
 library(here)  # For file path management
 
 # Load credentials
@@ -49,3 +50,7 @@ for (page in 1:total_pages) {
 
 # View the structure of the collected articles
 print(all_articles)
+
+# Save the data to a CSV file
+write_csv(all_articles, "all_articles.csv") 
+
