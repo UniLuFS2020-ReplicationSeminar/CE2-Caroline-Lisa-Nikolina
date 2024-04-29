@@ -60,7 +60,7 @@ all_articles %>%
   ggplot(aes(x = fct_reorder(section, n), y = n)) +
   geom_col(fill = "skyblue") +
   coord_flip() +
-  labs(title = "Number of Articles by Section",
+  labs(title = '"OpenAI" Articles by Section',
        x = "Sections",
        y = "Number of Articles") +
-  theme_minimal() 
+  theme_minimal()
