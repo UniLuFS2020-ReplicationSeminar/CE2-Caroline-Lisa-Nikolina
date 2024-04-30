@@ -30,3 +30,18 @@ sentiment_scores <- title_tokens %>%
 # View the sentiment scores
 head(sentiment_scores)
 View(sentiment_scores)
+
+# Sort by descending sentiment scores (highest to lowest)
+sentiment_scores_desc <- sentiment_scores %>%
+  arrange(desc(sentiment_score))
+
+# Display the head of the sorted tibble
+head(sentiment_scores_desc)
+
+# Sort by ascending sentiment scores (lowest to highest)
+sentiment_scores_asc <- sentiment_scores %>%
+  arrange(sentiment_score)
+
+# Display the head of the sorted tibble
+head(sentiment_scores_asc)
+
