@@ -14,3 +14,5 @@ We created a developer account to be able to access the data from the API. Then
 we retrieved the data with a GET request and parsed it to extract the relevant 
 information. We ended up with a tibble of 2390 articles, because it failed to 
 fetch data for page 240 and onward. These were sorted by relevancy.
+## Analysis------
+First we created a bar plot to represent the amount of articles in each section of the newspaper. We found that the topic was most relevant in the Technology, Sport, Opinion, World news and business sections. 
