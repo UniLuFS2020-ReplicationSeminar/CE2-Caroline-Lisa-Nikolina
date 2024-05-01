@@ -36,6 +36,10 @@ sections in descending order.
 
 ### Word Cloud
 
-Additionally we created a word cloud representing the words most often
+Additionally, we created a word cloud representing the words most often
 mentioned in the articles. Among others these included "open", "new",
 "australian" and "review".
+
+### Sentiment Analysis
+
+Finally,
