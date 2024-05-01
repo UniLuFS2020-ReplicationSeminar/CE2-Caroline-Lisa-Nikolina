@@ -29,8 +29,13 @@ were sorted by relevancy.
 
 First we created a bar plot to represent the amount of articles in each
 section of the newspaper. We found that the topic was most relevant in
-the Technology, Sport, Opinion, World news and business sections.
+the Technology, Sport, Opinion, World news, business and Australia news
+sections in descending order.
 
 ![](images/Articles_by_Section.png)
 
 ### Word Cloud
+
+Additionally we created a word cloud representing the words most often
+mentioned in the articles. Among others these included "open", "new",
+"australian" and "review".
