@@ -6,9 +6,12 @@ library(tm)
 library(wordcloud)
 library(readr)
 library(udpipe)
+library(NLP)
+library(RColorBrewer)
+library(SnowballC)
 
 # Convert titles to a corpus
-all_articles <- read_csv("all_articles.csv")
+all_articles <- read_csv("Data/all_articles.csv")
 titles_corpus <- Corpus(VectorSource(all_articles$title))
 
 # Function for stemming
