@@ -23,7 +23,7 @@ extract the relevant information. We ended up with a tibble of 2390
 articles, because it failed to fetch data for page 240 and onward. These
 were sorted by relevancy.
 
-## Analysis 
+## Analysis
 
 ### Plot
 
