@@ -45,3 +45,26 @@ sentiment_scores_asc <- sentiment_scores %>%
 # Display the head of the sorted tibble
 head(sentiment_scores_asc)
 
+# Summarize sentiments
+sentiment_summary <- sentiment_scores %>%
+  summarise(total_positive = sum(positive),
+            total_negative = sum(negative))
+
+# Calculate the net sentiment score
+sentiment_summary <- sentiment_summary %>%
+  mutate(net_sentiment = total_positive - total_negative)
+
+# Determine if the overall sentiment is positive, negative, or neutral
+if (sentiment_summary$net_sentiment > 0) {
+  conclusion <- "Overall sentiment is positive."
+} else if (sentiment_summary$net_sentiment < 0) {
+  conclusion <- "Overall sentiment is negative."
+} else {
+  conclusion <- "Overall sentiment is neutral."
+}
+
+# Print the sentiment summary and conclusion
+print(sentiment_summary)
+print(conclusion)
+
+
