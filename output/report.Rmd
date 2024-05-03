@@ -14,6 +14,14 @@ We created a developer account to be able to access the data from the Guardian A
 
 ## Analysis 
 
+### Plot 
+
 We created a plot to show the amount of articles that were published in each section using a bar plot to showcase the distribution. It became apparent that the most popular sections were "Technology", "Sport", "Opinion", "World news", "Business" and interestingly "Australia news" significantly above "US news" in descending order.
 
 ![](images/Articles_by_Section-01.png)
+
+### Word cloud
+
+Next a word cloud seemed to be a good option to display the most frequent words in these articles. Among others some prevalent words were "open", "happened", "review", "australian", "new", "first". More highlighted words were also "french", "gaza", "tech", "warns" and "intelligence".
+
+![](images/word_cloud.jpg){width="355"}
