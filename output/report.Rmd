@@ -14,4 +14,6 @@ We created a developer account to be able to access the data from the Guardian A
 
 ## Analysis 
 
-We then created a plot to show the distribution of articles across the sections. It
+We created a plot to show the amount of articles that were published in each section using a bar plot to showcase the distribution. It became apparent that the most popular sections were "Technology", "Sport", "Opinion", "World news", "Business" and interestingly "Australia news" significantly above "US news" in descending order.
+
+![](images/Articles_by_Section-01.png)
