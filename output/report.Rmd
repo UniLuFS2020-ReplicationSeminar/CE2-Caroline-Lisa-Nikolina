@@ -22,7 +22,7 @@ We created a plot to show the amount of articles that were published in each sec
 
 ### Word cloud
 
-Next we detirmined the most frequently mentioned words, among others "open", "new", "warns" and "intelligence".
+Next we determined the most frequently mentioned words, among others "open", "new", "warns" and "intelligence".
 
 ![](images/word_cloud.jpg){width="355"}
 
