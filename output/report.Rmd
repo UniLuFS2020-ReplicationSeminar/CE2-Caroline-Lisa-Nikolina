@@ -6,7 +6,7 @@ date: "2024-04-29"
 
 # Report
 
-We were interested in the relevance of OpenAI in media. We wanted to analyse in which sections this topic came up the most and how many articles were written about it, in which subsection, which words were most prevalent and if the sentiment around it was positive or negative.
+We were interested in the relevance of OpenAI in media. We wanted to analyse in which sections this topic came up the most, which words were most prevalent and if the sentiment around it was positive or negative.
 
 ## Collecting the Data
 
@@ -25,3 +25,7 @@ We created a plot to show the amount of articles that were published in each sec
 Next a word cloud seemed to be a good option to display the most frequent words in these articles. Among others some prevalent words were "open", "happened", "review", "australian", "new", "first". More highlighted words were also "french", "gaza", "tech", "warns" and "intelligence".
 
 ![](images/word_cloud.jpg){width="355"}
+
+### Sentiment analysis
+
+Finally, we analysed the general sentiment by defining positive ("win", "intelligence", "best", ...) and negative ("threat", "risk", "abuse", ...) through the bing lexicon to rate each article.
