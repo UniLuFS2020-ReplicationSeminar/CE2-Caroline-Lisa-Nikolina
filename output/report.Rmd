@@ -28,7 +28,7 @@ Next we determined the most frequently mentioned words, among others "open", "ne
 
 ### Sentiment analysis
 
-Finally, we defined positive ("win", "intelligence", "best", ...) and negative ("threat", "risk", "abuse", ...) words with the bing lexicon to rate the overall tendency in the texts each mention counting as a negative/ positive point. The results showed that the overall sentiment was negative with the negative outweighing the positive words by 303.
+Finally, we defined positive ("win", "intelligence", "best", ...) and negative ("threat", "risk", "abuse", ...) words with the "bing lexicon" to rate the overall tendency in the texts each mention counting as a negative/positive point. The results showed that the overall sentiment was negative with the negative outweighing the positive words by 303.
 
 ## Conclusion
 
