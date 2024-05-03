@@ -6,30 +6,30 @@ date: "2024-04-29"
 
 ## Introduction
 
-We were interested in the relevance of OpenAI in media and analysed in which sections this topic came up the most, which words were most prevalent and if the sentiment around it was positive or negative.
+We were interested in the relevance of OpenAI. We analysed in which sections this topic came up the most, which words were most prevalent and what the overall sentiment was.
 
 ## Collecting the Data
 
-We created a developer account to be able to access the data from the Guardian API. Then we retrieved the data with a GET request and parsed it to extract the relevant information. We ended up with a tibble of 2390 articles, because it failed to fetch data for page 240 and onward. These were sorted by relevancy.
+We created an account to access the data from the API, retrieved the data with a GET request and parsed it to extract the relevant information. We ended up with a tibble of 2390 articles, because it failed to fetch data for page 240 and onward. These were sorted by relevancy beforehand.
 
 ## Analysis 
 
 ### Plot 
 
-We created a plot to show the amount of articles that were published in each section using a bar plot to showcase the distribution. It became apparent that the most popular sections were "Technology", "Sport", "Opinion", "World news", "Business" and interestingly "Australia news" significantly above "US news" in descending order.
+We created a plot to show the amount of articles that were published in each section using a bar plot to showcase the distribution. The most popular sections were "Technology", "Sport", "Opinion".
 
 ![](images/Articles_by_Section-01.png)
 
 ### Word cloud
 
-Next a word cloud seemed to be a good option to display the most frequent words in these articles. Among others some prevalent words were "open", "review", "australian", "new", "first". More highlighted words were "french", "gaza", "tech", "warns" and "intelligence".
+Next we detirmined the most frequently mentioned words, among others "open", "new", "warns" and "intelligence".
 
 ![](images/word_cloud.jpg){width="355"}
 
 ### Sentiment analysis
 
-Finally, we analysed the general sentiment by defining positive ("win", "intelligence", "best", ...) and negative ("threat", "risk", "abuse", ...) through the bing lexicon to rate the overall tendency in the texts each mention of a word counting as a negative/ positive point. The results showed that the overall sentiment was negative with the negative outweighing the positive by 303 words.
+Finally, we defined positive ("win", "intelligence", "best", ...) and negative ("threat", "risk", "abuse", ...) words with the bing lexicon to rate the overall tendency in the texts each mention counting as a negative/ positive point. The results showed that the overall sentiment was negative with the negative outweighing the positive words by 303.
 
 ## Conclusion
 
-Our findings show that the most popular "OpenAI" articles are featured in various sections the most prevalent being "Technology", "Sport" and "Opinion". The most common words in these were positive as well as negative like "intelligence" or "risk". However, the sentiment analysis showed that the articles had a tendency to be formulated with negative key words.
+Our findings show that the most popular "OpenAI" articles are featured in various sections the most prevalent being "Technology", "Sport" and "Opinion". The most common words in these were positive as well as negative. However, the sentiment analysis showed that the articles had a tendency to be formulated with negative key words.
